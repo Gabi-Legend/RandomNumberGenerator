@@ -2,9 +2,9 @@ import random
 
 print("welcome to random number generator!")
 print("Your job is to find the generated number in less than 5 tries!")
-input("Do you want to play?(Y/N) : ").lower()
+play = input("Do you want to play?(Y/N) : ").lower()
 
-def play():
+def playGame():
     guessed = False
     guesses = 0
     randomNumber = random.randint(1,10)
@@ -12,10 +12,19 @@ def play():
         yourGuess = int(input("Your guess : "))
         if(yourGuess == randomNumber):
             guessed = True
-            print("Congrats, you guesses the number!")
+            guesses+=1
+            print(f"Congrats, you guesses the number in {guesses} tries!")
             break
+        else:
+            print("Try again")
+            guesses+=1
     if guessed == False:
         print("You lost!")
 
 def quit():
     print("Maybe later!")
+
+if play == "yes" or play == "da" or play == "y":
+    playGame()
+else:
+    quit()
